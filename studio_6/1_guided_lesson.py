@@ -10,19 +10,21 @@ student_1_major = "Computer Science"
 student_1_expected_graduation_year = "2026"
 
 student_2_id = 18582185
-student_2_name = "Jennie"
+student_2_first_name = "Jennie"
 student_2_last_name = "Kim"
 student_2_major = "Chemistry"
 student_2_expected_graduation_year = "2025"
 
 # TODO: Create a new student student_3 following the same format
-
-
-
+student_3_id = 18583598
+student_3_first_name = "Kyle"
+student_3_last_name = "Smith"
+student_3_major = "Art Media Technology"
+student_3_expected_graduation_year = "2025"
 
 
 # Discussion: What are some problems with this approach?
-
+# It takes a lot of time so you could create a function that creates a student from given data points
 
 
 
@@ -35,15 +37,39 @@ student_2_expected_graduation_year = "2025"
 # Basic structure of a class
 class Student:
     # TODO: Let's build this class!
-    def __init__(self):
-        pass
+    def __init__(self, id, first_name, last_name, major, graduation_year):
+        self.__id = id
+        self.first_name = first_name
+        self.last_name = last_name
+        self.major = major
+        self. greduation_year = graduation_year
+
+    @property
+    def id(self):
+        return self.__id
+    
+    def get_full_name(self):
+        return self.first_name + (" ") + self.last_name
+    
+    def get_last_four(self):
+        string_id = str(self.__id)
+        return int(string_id[-4:])
+
+    def print_degree_title(self):
+        return ("Bachelors in ") + self.major 
+
+
+
 
 
 
 # TODO: Let's recreate our 3 students as objects of our new class!
 
+student_1 = Student(18584831, "Daniel", "White", "computer science", "2026")
 
+student_2 = Student(18582185, "Jennie", "Kim", "Chemestry", "2025")
 
+student_3 = Student(1852598, "Kyle", "Smith", "Art Media Technology", "2025")
 
 
 
@@ -62,7 +88,12 @@ class Student:
     
 # TODO: Add an @property getter for id
 # Test to make sure you can get the id with student_1.id
-    
+
+print(student_1.id) 
+
+print(student_1.get_full_name())  
+
+print(student_1.get_last_four())
 
 
 # What if we want a way to just get the last four of the id instead of the whole thing? We can build a custom class method to do this.
@@ -79,10 +110,24 @@ class Student:
     
 # TODO: Create a child class called GradStudent which inherits from the Student class, with the additional property of "specialization"
 
+class GradStudent(Student):
+    def __init__(self, id, first_name, last_name, major, graduation_year, specialization):
+        super().__init__(id, first_name, last_name, major, graduation_year)
+        self.specialization = specialization
+
+    def print_degree_title(self):
+        return "Masters in " + self.major + "with a speciallization in " + self.specialization
+
+   
 
 # create a new student_4 which uses GradStudent instead.
 # this person's major is Computer Science and their Specialization is Artifical Intelligence
     
+student_4 = GradStudent (1234567, "Sasha", "Cohen", "Computer Science", "2027", "Artificial Intelligence")
+
+print (student_1.print_degree_title())
+
+print (student_4.print_degree_title())
 
 # OOP Property - Polymorphism
 # refers to methods/functions/operators with the same name that can be executed on many objects or classes.
