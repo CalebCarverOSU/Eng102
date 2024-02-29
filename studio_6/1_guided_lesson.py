@@ -116,7 +116,7 @@ class GradStudent(Student):
         self.specialization = specialization
 
     def print_degree_title(self):
-        return "Masters in " + self.major + "with a speciallization in " + self.specialization
+        return "Masters in " + self.major + " with a speciallization in " + self.specialization
 
    
 
